@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Layercake.js" src="./layercake.svg" />
+  <img alt="Layercake.js" src="https://svgshare.com/i/95f.svg" />
 </p>
 
 ----

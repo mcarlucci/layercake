@@ -1,6 +1,6 @@
 /**
   layercake-js: A deliciously automated z-index manager
-  @version v1.0.0
+  @version v1.0.1
   @link https://github.com/mcarlucci/layercake#readme
   @author Matt Carlucci <matthewcarlucci09@gmail.com> (mcarlucci.com)
   @license ISC
