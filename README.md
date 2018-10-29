@@ -9,7 +9,7 @@
 ## Installation
 Include the following script before the closing `</body>` tag:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/layercake-js@1.0.0/layercake.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/layercake-js/dist/layercake.min.js"></script>
 ```
 
 ## Usage
