@@ -1,5 +1,5 @@
 {
-  "name": "layercake",
+  "name": "layercake-js",
   "version": "1.0.0",
   "description": "A deliciously automated z-index manager",
   "main": "dist/layercake.js",

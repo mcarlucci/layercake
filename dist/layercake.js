@@ -1,5 +1,5 @@
 /**
-  layercake - A deliciously automated z-index manager
+  layercake-js: A deliciously automated z-index manager
   @version v1.0.0
   @link https://github.com/mcarlucci/layercake#readme
   @author Matt Carlucci <matthewcarlucci09@gmail.com> (mcarlucci.com)
@@ -72,7 +72,7 @@
             var child = _step2.value;
             var computedStyle = document.defaultView.getComputedStyle(child);
 
-            if (!child.hasAttribute("data-overlay") || computedStyle.getPropertyValue("display") === 'none' || computedStyle.getPropertyValue("visibility") === 'hidden') {
+            if (!child.hasAttribute("data-layercake-layer") || computedStyle.getPropertyValue("display") === 'none' || computedStyle.getPropertyValue("visibility") === 'hidden') {
               return;
             }
 
@@ -107,7 +107,7 @@
           for (var _iterator3 = mutation.removedNodes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
             var _child = _step3.value;
 
-            if (!_child.hasAttribute("data-overlay")) {
+            if (!_child.hasAttribute("data-layercake-layer")) {
               return;
             }
 

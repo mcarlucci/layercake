@@ -13,7 +13,7 @@ import {
 } from './package.json'
 
 const banner = `/**
-  ${name} - ${description}
+  ${name}: ${description}
   @version v${version}
   @link ${homepage}
   @author ${author}

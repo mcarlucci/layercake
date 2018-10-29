@@ -49,7 +49,7 @@ const observer = new MutationObserver(mutationList => {
   for (const mutation of mutationList) {
     for (const child of mutation.addedNodes) {
       let computedStyle = document.defaultView.getComputedStyle(child);
-      if (!child.hasAttribute("data-overlay")
+      if (!child.hasAttribute("data-layercake-layer")
           || computedStyle.getPropertyValue("display") === 'none'
           || computedStyle.getPropertyValue("visibility") === 'hidden') { return; }
       if (highestZ > window.layerCake.zIndex) {
@@ -61,7 +61,7 @@ const observer = new MutationObserver(mutationList => {
     }
 
     for (const child of mutation.removedNodes) {
-      if (!child.hasAttribute("data-overlay")) { return; }
+      if (!child.hasAttribute("data-layercake-layer")) { return; }
       window.layerCake.zIndex--;
     }
   }
