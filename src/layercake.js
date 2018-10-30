@@ -45,7 +45,8 @@ function getHighestZIndex() {
 
 const observer = new MutationObserver(mutationList => {
   const highestZ = getHighestZIndex();
-
+  const numOfManagedElements = document.querySelectorAll('[data-layercake-layer]').length;
+  
   for (const mutation of mutationList) {
     for (const child of mutation.addedNodes) {
       let computedStyle = document.defaultView.getComputedStyle(child);
@@ -53,7 +54,7 @@ const observer = new MutationObserver(mutationList => {
           && ['absolute', 'fixed', 'relative'].includes(computedStyle.getPropertyValue("position"))
           && computedStyle.getPropertyValue("display") !== 'none'
           && computedStyle.getPropertyValue("visibility") !== 'hidden') {
-        if (highestZ > window.layerCake.zIndex) {
+        if (highestZ >= window.layerCake.zIndex) {
           window.layerCake.zIndex = highestZ + 1;
         } else {
           window.layerCake.zIndex++;
@@ -63,8 +64,14 @@ const observer = new MutationObserver(mutationList => {
     }
 
     for (const child of mutation.removedNodes) {
-      if (!child.hasAttribute("data-layercake-layer")) { return; }
-      window.layerCake.zIndex--;
+      let computedStyle = document.defaultView.getComputedStyle(child);
+      if (child.hasAttribute("data-layercake-layer")) { 
+        if (numOfManagedElements === 0 || highestZ >= window.layerCake.zIndex) {
+          window.layerCake.zIndex = highestZ;
+        } else {
+          window.layerCake.zIndex--;
+        }
+      }
     }
   }
 });
