@@ -12,7 +12,7 @@
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "release": "node scripts/release.js && npm publish",
-    "version": "auto-changelog -p --template keepachangelog && npm run build && sleep 3 && git add CHANGELOG.md",
+    "version": "auto-changelog -p --template keepachangelog && npm run build && sleep 3 && git add .",
     "eslint": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
