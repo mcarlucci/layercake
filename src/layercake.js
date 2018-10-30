@@ -49,15 +49,17 @@ const observer = new MutationObserver(mutationList => {
   for (const mutation of mutationList) {
     for (const child of mutation.addedNodes) {
       let computedStyle = document.defaultView.getComputedStyle(child);
-      if (!child.hasAttribute("data-layercake-layer")
-          || computedStyle.getPropertyValue("display") === 'none'
-          || computedStyle.getPropertyValue("visibility") === 'hidden') { return; }
-      if (highestZ > window.layerCake.zIndex) {
-        window.layerCake.zIndex = highestZ + 1;
-      } else {
-        window.layerCake.zIndex++;
+      if (child.hasAttribute("data-layercake-layer")
+          && ['absolute', 'fixed', 'relative'].includes(computedStyle.getPropertyValue("position"))
+          && computedStyle.getPropertyValue("display") !== 'none'
+          && computedStyle.getPropertyValue("visibility") !== 'hidden') {
+        if (highestZ > window.layerCake.zIndex) {
+          window.layerCake.zIndex = highestZ + 1;
+        } else {
+          window.layerCake.zIndex++;
+        }
+        child.style.zIndex = window.layerCake.zIndex;
       }
-      child.style.zIndex = window.layerCake.zIndex;
     }
 
     for (const child of mutation.removedNodes) {

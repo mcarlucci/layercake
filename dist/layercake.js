@@ -1,6 +1,6 @@
 /**
   layercake-js: A deliciously automated z-index manager
-  @version v1.0.2
+  @version v1.1.0
   @link https://github.com/mcarlucci/layercake#readme
   @author Matt Carlucci <matthewcarlucci09@gmail.com> (mcarlucci.com)
   @license ISC
@@ -72,17 +72,15 @@
             var child = _step2.value;
             var computedStyle = document.defaultView.getComputedStyle(child);
 
-            if (!child.hasAttribute("data-layercake-layer") || computedStyle.getPropertyValue("display") === 'none' || computedStyle.getPropertyValue("visibility") === 'hidden') {
-              return;
-            }
+            if (child.hasAttribute("data-layercake-layer") && ['absolute', 'fixed', 'relative'].includes(computedStyle.getPropertyValue("position")) && computedStyle.getPropertyValue("display") !== 'none' && computedStyle.getPropertyValue("visibility") !== 'hidden') {
+              if (highestZ > window.layerCake.zIndex) {
+                window.layerCake.zIndex = highestZ + 1;
+              } else {
+                window.layerCake.zIndex++;
+              }
 
-            if (highestZ > window.layerCake.zIndex) {
-              window.layerCake.zIndex = highestZ + 1;
-            } else {
-              window.layerCake.zIndex++;
+              child.style.zIndex = window.layerCake.zIndex;
             }
-
-            child.style.zIndex = window.layerCake.zIndex;
           }
         } catch (err) {
           _didIteratorError2 = true;

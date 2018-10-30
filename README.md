@@ -9,14 +9,23 @@
 ## Installation
 Include the following script before the closing `</body>` tag:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/layercake-js/dist/layercake.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/layercake-js@1.0.2/dist/layercake.min.js"></script>
 ```
 
 ## Usage
-Add the `data-layercake-layer` html attribute to each html element you want to be managed by Layercake. Ex:
+Add the `data-layercake-layer` data attribute, as well as a `position` property of `absolute`, `relative` or `fixed` to each html element you want to be managed by Layercake.js.
 
+> Note: Elements with CSS computed properties of  `display: none;` or `visibility: hidden;` will not be tracked by Layercake.js.
+
+Example:
 ```html
+<style>
+  #popup {
+    position: absolute;
+  }
+</style>
+
 <div id="popup" data-layercake-layer>
-  Hi! I am a popup overlay managed by Layercake!
+  Hi! I am a popup overlay managed by Layercake.js!
 </div>
 ```
