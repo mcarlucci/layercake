@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "release": "node scripts/release.js",
+    "release": "node scripts/release.js && npm publish",
     "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "eslint": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
