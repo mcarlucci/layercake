@@ -11,6 +11,8 @@
   ],
   "scripts": {
     "build": "rollup --config rollup.config.js",
+    "release": "node scripts/release.js",
+    "version": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "eslint": "eslint . --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,7 +33,10 @@
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.0.0-beta.40",
+    "auto-changelog": "^1.8.1",
     "babel-minify": "^0.5.0",
+    "dotenv": "^6.1.0",
+    "gh-release": "^3.4.0",
     "rollup": "^0.66.0",
     "rollup-plugin-babel": "^4.0.0-beta.0",
     "rollup-plugin-uglify": "^5.0.0"
