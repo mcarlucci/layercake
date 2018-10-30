@@ -1,6 +1,6 @@
 /**
   layercake-js: A deliciously automated z-index manager
-  @version v1.1.1
+  @version v1.1.2
   @link https://github.com/mcarlucci/layercake#readme
   @author Matt Carlucci <matthewcarlucci09@gmail.com> (mcarlucci.com)
   @license ISC
@@ -50,6 +50,7 @@ function getHighestZIndex() {
 
 var observer = new MutationObserver(function (mutationList) {
   var highestZ = getHighestZIndex();
+  var numOfManagedElements = document.querySelectorAll('[data-layercake-layer]').length;
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
@@ -67,7 +68,7 @@ var observer = new MutationObserver(function (mutationList) {
           var computedStyle = document.defaultView.getComputedStyle(child);
 
           if (child.hasAttribute("data-layercake-layer") && ['absolute', 'fixed', 'relative'].includes(computedStyle.getPropertyValue("position")) && computedStyle.getPropertyValue("display") !== 'none' && computedStyle.getPropertyValue("visibility") !== 'hidden') {
-            if (highestZ > window.layerCake.zIndex) {
+            if (highestZ >= window.layerCake.zIndex) {
               window.layerCake.zIndex = highestZ + 1;
             } else {
               window.layerCake.zIndex++;
@@ -99,11 +100,15 @@ var observer = new MutationObserver(function (mutationList) {
         for (var _iterator3 = mutation.removedNodes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
           var _child = _step3.value;
 
-          if (!_child.hasAttribute("data-layercake-layer")) {
-            return;
-          }
+          var _computedStyle = document.defaultView.getComputedStyle(_child);
 
-          window.layerCake.zIndex--;
+          if (_child.hasAttribute("data-layercake-layer")) {
+            if (numOfManagedElements === 0 || highestZ >= window.layerCake.zIndex) {
+              window.layerCake.zIndex = highestZ;
+            } else {
+              window.layerCake.zIndex--;
+            }
+          }
         }
       } catch (err) {
         _didIteratorError3 = true;
