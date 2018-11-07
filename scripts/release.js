@@ -2,8 +2,6 @@ var ghRelease = require('gh-release')
 var packageInfo = require('../package.json')
 require('dotenv').config()
 
-// console.log('arguments: ', process.argv[3]);
-
 var options = {
   tag_name: `v${packageInfo.version}`,
   target_commitish: 'master',
@@ -13,11 +11,7 @@ var options = {
   prerelease: false,
   repo: 'layercake',
   owner: 'mcarlucci',
-  endpoint: 'https://api.github.com' // for GitHub enterprise, use http(s)://hostname/api/v3
-}
-
-// or an API token
-var options = {
+  endpoint: 'https://api.github.com',
   auth: {
     token: process.env.TOKEN
   }

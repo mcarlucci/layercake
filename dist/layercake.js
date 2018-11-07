@@ -11,52 +11,22 @@
   (factory());
 }(this, (function () { 'use strict';
 
+  /* global MutationObserver */
   window.layerCake = {
-    zindex: 0
+    zIndex: 0
   };
-  window.addEventListener("load", function () {
+  window.addEventListener('load', function () {
     window.layerCake.zIndex = getHighestZIndex();
     observer.observe(document, {
       childList: true,
       subtree: true
     });
   });
-  window.addEventListener("beforeunload", function () {
+  window.addEventListener('beforeunload', function () {
     observer.disconnect();
   });
-
-  function isNumeric(val) {
-    return !isNaN(parseFloat(val)) && isFinite(val);
-  }
-
-  function getHighestZIndex() {
-    var queryObject = document.querySelectorAll("*");
-    var childNodes = Object.keys(queryObject).map(function (key) {
-      return queryObject[key];
-    });
-    var highest = 0;
-    childNodes.forEach(function (node) {
-      // Get the calculated CSS z-index value.
-      var cssStyles = document.defaultView.getComputedStyle(node);
-      var cssZIndex = cssStyles.getPropertyValue("z-index"); // Get any inline z-index value.
-
-      var inlineZIndex = node.style.zIndex; // Coerce the values as integers for comparison.
-
-      cssZIndex = isNumeric(cssZIndex) ? parseInt(cssZIndex, 10) : 0;
-      inlineZIndex = isNumeric(inlineZIndex) ? parseInt(inlineZIndex, 10) : 0; // Take the highest z-index for this element, whether inline or from CSS.
-
-      var currentZIndex = cssZIndex > inlineZIndex ? cssZIndex : inlineZIndex;
-
-      if (currentZIndex > highest) {
-        highest = currentZIndex;
-      }
-    });
-    return highest;
-  }
-
   var observer = new MutationObserver(function (mutationList) {
     var highestZ = getHighestZIndex();
-    var numOfManagedElements = document.querySelectorAll('[data-layercake-layer]').length;
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
@@ -71,15 +41,15 @@
         try {
           for (var _iterator2 = mutation.addedNodes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
             var child = _step2.value;
-            var computedStyle = document.defaultView.getComputedStyle(child);
 
-            if (child.hasAttribute("data-layercake-layer") && ['absolute', 'fixed', 'relative'].includes(computedStyle.getPropertyValue("position")) && computedStyle.getPropertyValue("display") !== 'none' && computedStyle.getPropertyValue("visibility") !== 'hidden') {
-              if (highestZ >= window.layerCake.zIndex) {
-                window.layerCake.zIndex = highestZ + 1;
-              } else {
-                window.layerCake.zIndex++;
-              }
+            if (!child.hasAttribute('data-layercake-layer')) {
+              return;
+            }
 
+            var computedStyle = window.getComputedStyle(child);
+
+            if (['absolute', 'fixed', 'relative'].includes(computedStyle.getPropertyValue('position')) && computedStyle.getPropertyValue('display') !== 'none' && computedStyle.getPropertyValue('visibility') !== 'hidden') {
+              window.layerCake.zIndex = highestZ + 1;
               child.style.zIndex = window.layerCake.zIndex;
             }
           }
@@ -106,15 +76,11 @@
           for (var _iterator3 = mutation.removedNodes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
             var _child = _step3.value;
 
-            var _computedStyle = document.defaultView.getComputedStyle(_child);
-
-            if (_child.hasAttribute("data-layercake-layer")) {
-              if (numOfManagedElements === 0 || highestZ >= window.layerCake.zIndex) {
-                window.layerCake.zIndex = highestZ;
-              } else {
-                window.layerCake.zIndex--;
-              }
+            if (!_child.hasAttribute('data-layercake-layer')) {
+              return;
             }
+
+            window.layerCake.zIndex = highestZ;
           }
         } catch (err) {
           _didIteratorError3 = true;
@@ -145,6 +111,35 @@
         }
       }
     }
-  });
+  }); // Helper functions
+
+  function isNumeric(val) {
+    return !isNaN(parseFloat(val)) && isFinite(val);
+  }
+
+  function getHighestZIndex() {
+    var queryObject = document.body.querySelectorAll('*');
+    var childNodes = Object.keys(queryObject).map(function (key) {
+      return queryObject[key];
+    });
+    var highest = 0;
+    childNodes.forEach(function (node) {
+      // Get the calculated CSS z-index value.
+      var cssStyles = window.getComputedStyle(node);
+      var cssZIndex = cssStyles ? cssStyles.getPropertyValue('z-index') : 0; // Get any inline z-index value.
+
+      var inlineZIndex = node.style ? node.style.zIndex : 0; // Coerce the values as integers for comparison.
+
+      cssZIndex = isNumeric(cssZIndex) ? parseInt(cssZIndex, 10) : 0;
+      inlineZIndex = isNumeric(inlineZIndex) ? parseInt(inlineZIndex, 10) : 0; // Take the highest z-index for this element, whether inline or from CSS.
+
+      var currentZIndex = cssZIndex > inlineZIndex ? cssZIndex : inlineZIndex;
+
+      if (currentZIndex > highest) {
+        highest = currentZIndex;
+      }
+    });
+    return highest;
+  }
 
 })));
