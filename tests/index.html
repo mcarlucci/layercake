@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.8.0.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.0.0/polyfill.min.js"></script>
+    <script src="https://code.jquery.com/qunit/qunit-2.8.0.js"></script>
+    <script src="../dist/layercake.js"></script>
+    <script src="tests.js"></script>
+    <style>
+      p {
+        max-width: 18.75rem;
+        margin: 1rem auto;
+      }
+      section {
+        position: relative;
+      }
+      .layer {
+        background: blue;
+        border: 1px solid black;
+        color: white;
+        font-family: "Courier New", Courier, monospace;
+        text-align: right;
+        padding: 5px;
+        position: absolute;
+        box-sizing: border-box;
+        height: 250px;
+        width: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <section></section>
+  </body>
+</html>
