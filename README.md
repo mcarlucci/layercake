@@ -2,8 +2,13 @@
   <img alt="Layercake.js" src="https://svgshare.com/i/95f.svg" />
 </p>
 
+<p align="center">
+  <h3>Demo</h3>
+  <a href="https://codepen.io/mcarlucci-1471848194/pen/gBKMOX" target="_blank">
+    <img alt="Layercake.js" src="https://media.giphy.com/media/9xcpU8tX4YE1d0GHyc/giphy.gif" />
+  </a>
+</p>
 ----
-
 **Layercake.js** is a zero dependency javascript plugin that automatically manages the `z-index` css property of the elements on your page. Layercake.js will automatically determine which element should have the higher z-index based on user interaction and increment and decrement it accordingly.
 
 ## Installation
