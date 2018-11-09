@@ -5,13 +5,23 @@
 ----
 
 <p align="center">
+  <img alt="npm version" src="https://img.shields.io/npm/v/layercake-js.svg?style=flat-square" />
+  <img alt="minified size" src="https://img.shields.io/bundlephobia/min/layercake-js.svg?style=flat-square" />
+  <img alt="gzipped size" src="https://img.shields.io/bundlephobia/minzip/layercake-js.svg?style=flat-square" />
+  <img alt="hits per month" src="https://data.jsdelivr.com/v1/package/npm/layercake-js/badge" />
+  <img alt="gzipped size" src="https://img.shields.io/npm/l/layercake-js.svg?style=flat-square" />
+</p>
+
+----
+
+<p align="center">
   <h3>Demo</h3>
   <a href="https://codepen.io/mcarlucci-1471848194/pen/gBKMOX" target="_blank">
     <img alt="Layercake.js" src="https://media.giphy.com/media/9xcpU8tX4YE1d0GHyc/giphy.gif" />
   </a>
 </p>
 
-**Layercake.js** is a zero dependency javascript plugin that automatically manages the `z-index` css property of the elements on your page. Layercake.js will automatically determine which element should have the higher z-index based on user interaction (mutations to the DOM) and increment and decrement it accordingly.
+**Layercake.js** is a zero dependency javascript plugin that automatically manages the z-index css property of the elements on your page based on user interaction (mutations to the DOM). Layercake.js will determine which element should have the higher z-index and increment/ decrement it accordingly.
 
 ## Installation
 Include the following script before the closing `</body>` tag:
