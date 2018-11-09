@@ -6,7 +6,6 @@ var options = {
   tag_name: `v${packageInfo.version}`,
   target_commitish: 'master',
   name: `v${packageInfo.version}`,
-  body: '* init\n',
   draft: false,
   prerelease: false,
   repo: 'layercake',
