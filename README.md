@@ -21,7 +21,7 @@
   </a>
 </p>
 
-**Layercake.js** is a zero dependency javascript plugin that automatically manages the z-index css property of the elements on your page based on user interaction (mutations to the DOM). Layercake.js will determine which element should have the higher z-index and increment/ decrement it accordingly.
+**Layercake.js** is a zero dependency javascript plugin that automatically manages the z-index css property of the elements on your page based on user interaction (mutations to the DOM). Layercake.js will determine which element should have the higher z-index and increment/decrement it accordingly.
 
 ## Installation
 Include the following script before the closing `</body>` tag:
