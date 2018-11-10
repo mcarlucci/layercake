@@ -10,7 +10,7 @@ var options = {
   prerelease: false,
   repo: 'layercake',
   owner: 'mcarlucci',
-  assets: 'dist/layercake.js, dist/layercake.min.js, dist/layercake.es.js',
+  assets: ['dist/layercake.js', 'dist/layercake.min.js', 'dist/layercake.es.js'],
   endpoint: 'https://api.github.com',
   auth: {
     token: process.env.TOKEN
