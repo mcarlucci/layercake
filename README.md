@@ -10,6 +10,7 @@
   <img alt="gzipped size" src="https://img.shields.io/bundlephobia/minzip/layercake-js.svg?style=flat-square" />
   <img alt="hits per month" src="https://data.jsdelivr.com/v1/package/npm/layercake-js/badge" />
   <img alt="gzipped size" src="https://img.shields.io/npm/l/layercake-js.svg?style=flat-square" />
+  <a href="https://twitter.com/intent/tweet?text=Layercake.js%20-%20an%20automated%20z-index%20manager%20%0A&url=https://mcarlucci.github.io/layercake&via=mcarlucci515&hashtags=javascript,css,zindex"><img alt="share on twitter" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" /></a>
 </p>
 
 ----
