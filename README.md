@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Layercake.js" src="./_layouts/layercake-js.svg" />
+  <img alt="Layercake.js" src="./_layouts/layercake-js.svg?sanitize=true" />
 </p>
 
 ----
