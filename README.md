@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Layercake.js" src="https://svgshare.com/i/95f.svg" />
+  <img alt="Layercake.js" src="./_layouts/layercake-js.svg" />
 </p>
 
 ----
@@ -18,7 +18,7 @@
 <p align="center">
   <h3>Demo</h3>
   <a href="https://codepen.io/mcarlucci-1471848194/pen/gBKMOX" target="_blank">
-    <img alt="Layercake.js" src="https://media.giphy.com/media/9xcpU8tX4YE1d0GHyc/giphy.gif" />
+    <img alt="Layercake.js" src="./_layouts/layercake_demo.gif" />
   </a>
 </p>
 
